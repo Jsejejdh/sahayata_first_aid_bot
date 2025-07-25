@@ -9,7 +9,7 @@
 
   <style>
     body {
-      background-image: url('bot_bg.png');
+      background-image: url('images/bot_bg.png');
       background-size: cover;
       background-repeat: no-repeat;
       
@@ -31,21 +31,19 @@
   </style>
 
   <!-- Watson Assistant Embed -->
-  <script>
-    window.watsonAssistantChatOptions = {
-      integrationID: "d20c971e-9fc0-4269-ad75-387836673a87",
-      region: "au-syd",
-      serviceInstanceID: "9861236b-c992-48b3-9276-9ffc0f42ccf5",
-      onLoad: async (instance) => { await instance.render(); }
-    };
-    setTimeout(function() {
-      const t = document.createElement('script');
-      t.src = "https://web-chat.global.assistant.watson.appdomain.cloud/versions/" +
-              (window.watsonAssistantChatOptions.clientVersion || 'latest') +
-              "/WatsonAssistantChatEntry.js";
-      document.head.appendChild(t);
-    });
-  </script>
+<script>
+  window.watsonAssistantChatOptions = {
+    integrationID: "d20c971e-9fc0-4269-ad75-387836673a87", // The ID of this integration.
+    region: "au-syd", // The region your integration is hosted in.
+    serviceInstanceID: "9861236b-c992-48b3-9276-9ffc0f42ccf5", // The ID of your service instance.
+    onLoad: async (instance) => { await instance.render(); }
+  };
+  setTimeout(function(){
+    const t=document.createElement('script');
+    t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+    document.head.appendChild(t);
+  });
+</script>
 </head>
 
 <body>
