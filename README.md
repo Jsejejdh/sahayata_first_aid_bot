@@ -26,7 +26,7 @@
 
 ## 🌐 Screenshot
 
-![Screenshot](./sahayata_web_front.png)
+![Screenshot](./images/sahayata_web_front.png)
 
 ---
 
