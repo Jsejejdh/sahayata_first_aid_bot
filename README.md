@@ -26,7 +26,7 @@
 
 ## 🌐 Screenshot
 
-[Screenshot](./Screenshot 2025-07-25 191617.png)
+[Screenshot](./sahayata_web_front.png)
 
 ---
 
