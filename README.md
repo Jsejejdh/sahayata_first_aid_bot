@@ -26,7 +26,7 @@
 
 ## 🌐 Screenshot
 
-![Screenshot](./bot_bg.png)
+![Screenshot](./Screenshot 2025-07-25 191617.png)
 
 ---
 
