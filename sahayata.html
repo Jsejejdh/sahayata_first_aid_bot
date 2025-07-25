@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sahayata Chatbot</title>
+  
+  <!-- Google Fonts: Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      background-image: url('bot_bg.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      color: rgb(79, 34, 194);
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 100px;
+      font-size: 3em;
+      font-weight: 600;
+    }
+
+    
+  </style>
+
+  <!-- Watson Assistant Embed -->
+  <script>
+    window.watsonAssistantChatOptions = {
+      integrationID: "d20c971e-9fc0-4269-ad75-387836673a87",
+      region: "au-syd",
+      serviceInstanceID: "9861236b-c992-48b3-9276-9ffc0f42ccf5",
+      onLoad: async (instance) => { await instance.render(); }
+    };
+    setTimeout(function() {
+      const t = document.createElement('script');
+      t.src = "https://web-chat.global.assistant.watson.appdomain.cloud/versions/" +
+              (window.watsonAssistantChatOptions.clientVersion || 'latest') +
+              "/WatsonAssistantChatEntry.js";
+      document.head.appendChild(t);
+    });
+  </script>
+</head>
+
+<body>
+  <h1>Welcome to Sahayata First Aid Bot</h1>
+
+</body>
+</html>

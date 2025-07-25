@@ -1,0 +1,3938 @@
+{
+  "name": "Sahayata-action",
+  "type": "action",
+  "counts": {
+    "actions": 5,
+    "intents": 2,
+    "entities": 16,
+    "data_types": 0,
+    "collections": 0,
+    "global_variables": 0
+  },
+  "status": "Available",
+  "language": "en",
+  "skill_id": "bedd03a0-ce49-4491-b4af-d2c9ffaabd3b",
+  "workspace": {
+    "actions": [
+      {
+        "type": "standard",
+        "steps": [
+          {
+            "step": "step_001",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text": "Welcome, how can I assist you?"
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "end_action"
+            },
+            "variable": "step_001"
+          }
+        ],
+        "title": "Greet customer",
+        "action": "welcome",
+        "boosts": [],
+        "handlers": [],
+        "condition": {
+          "expression": "welcome"
+        },
+        "variables": [
+          {
+            "variable": "step_001",
+            "data_type": "any"
+          }
+        ],
+        "next_action": "action_45105",
+        "disambiguation_opt_out": true
+      },
+      {
+        "type": "standard",
+        "steps": [
+          {
+            "step": "digression_failure",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text": "Sorry I couldn't confirm if you wanted to return to previous topic, let me connect to an agent."
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "connect_to_agent",
+              "response": {
+                "transfer_info": {
+                  "target": {}
+                },
+                "agent_available": {
+                  "message": "Let's send you to an available agent."
+                },
+                "agent_unavailable": {
+                  "message": "There are no agents available at this time. When one becomes available, we'll connect you."
+                },
+                "message_to_human_agent": ""
+              }
+            },
+            "variable": "digression_failure",
+            "condition": {
+              "eq": [
+                {
+                  "system_variable": "fallback_reason"
+                },
+                {
+                  "scalar": "Failed to confirm topic return"
+                }
+              ]
+            },
+            "next_step": "step_001"
+          },
+          {
+            "step": "step_001",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text": "I'm afraid I don't understand. I can connect you to an agent."
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "connect_to_agent",
+              "response": {
+                "transfer_info": {
+                  "target": {}
+                },
+                "agent_available": {
+                  "message": "Let's send you to an available agent."
+                },
+                "agent_unavailable": {
+                  "message": "There are no agents available at this time. When one becomes available, we'll connect you."
+                },
+                "message_to_human_agent": ""
+              }
+            },
+            "variable": "step_001",
+            "condition": {
+              "eq": [
+                {
+                  "system_variable": "fallback_reason"
+                },
+                {
+                  "scalar": "Step validation failed"
+                }
+              ]
+            },
+            "next_step": "step_002"
+          },
+          {
+            "step": "step_002",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text": "Sorry I couldn't assist you. I will connect you to an agent right away."
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "connect_to_agent",
+              "response": {
+                "transfer_info": {
+                  "target": {}
+                },
+                "agent_available": {
+                  "message": "Let's send you to an available agent."
+                },
+                "agent_unavailable": {
+                  "message": "There are no agents available at this time. When one becomes available, we'll connect you."
+                },
+                "message_to_human_agent": ""
+              }
+            },
+            "variable": "step_002",
+            "condition": {
+              "eq": [
+                {
+                  "system_variable": "fallback_reason"
+                },
+                {
+                  "scalar": "Agent requested"
+                }
+              ]
+            },
+            "next_step": "step_003"
+          },
+          {
+            "step": "step_003",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text": "I am afraid I do not understand what you are asking, let me connect you to an agent."
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "connect_to_agent",
+              "response": {
+                "transfer_info": {
+                  "target": {}
+                },
+                "agent_available": {
+                  "message": "Let's send you to an available agent."
+                },
+                "agent_unavailable": {
+                  "message": "There are no agents available at this time. When one becomes available, we'll connect you."
+                },
+                "message_to_human_agent": ""
+              }
+            },
+            "variable": "step_003",
+            "condition": {
+              "eq": [
+                {
+                  "system_variable": "fallback_reason"
+                },
+                {
+                  "scalar": "No action matches"
+                }
+              ]
+            },
+            "next_step": "step_004"
+          },
+          {
+            "step": "step_004",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text": "It seems this conversation would be best managed by a human agent. Let me connect you to one of our agents."
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "connect_to_agent",
+              "response": {
+                "transfer_info": {
+                  "target": {}
+                },
+                "agent_available": {
+                  "message": "Let's send you to an available agent."
+                },
+                "agent_unavailable": {
+                  "message": "There are no agents available at this time. When one becomes available, we'll connect you."
+                },
+                "message_to_human_agent": ""
+              }
+            },
+            "variable": "step_004",
+            "condition": {
+              "eq": [
+                {
+                  "system_variable": "fallback_reason"
+                },
+                {
+                  "scalar": "Danger word detected"
+                }
+              ]
+            },
+            "next_step": "step_005"
+          },
+          {
+            "step": "step_005",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text": "It seems this conversation would be best managed by a human agent. Let me connect you to one of our agents."
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "connect_to_agent",
+              "response": {
+                "transfer_info": {
+                  "target": {}
+                },
+                "agent_available": {
+                  "message": "Let's send you to an available agent."
+                },
+                "agent_unavailable": {
+                  "message": "There are no agents available at this time. When one becomes available, we'll connect you."
+                },
+                "message_to_human_agent": ""
+              }
+            },
+            "variable": "step_005",
+            "condition": {
+              "eq": [
+                {
+                  "system_variable": "fallback_reason"
+                },
+                {
+                  "scalar": "Profanity detected"
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Fallback",
+        "action": "fallback",
+        "boosts": [],
+        "handlers": [],
+        "condition": {
+          "intent": "fallback_connect_to_agent"
+        },
+        "variables": [
+          {
+            "title": "Topic return failed",
+            "variable": "digression_failure",
+            "data_type": "any"
+          },
+          {
+            "title": "I'm afraid I don't understand. I can connect you to an agent.",
+            "variable": "step_001",
+            "data_type": "any"
+          },
+          {
+            "title": "Sorry I couldn't assist you. I will connect you to an agent righ",
+            "variable": "step_002",
+            "data_type": "any"
+          },
+          {
+            "title": "I am afraid I do not understand what you are asking, let me conn",
+            "variable": "step_003",
+            "data_type": "any"
+          },
+          {
+            "title": "It seems this conversation would be best managed",
+            "variable": "step_004",
+            "data_type": "any"
+          },
+          {
+            "title": "Profanity - It seems this conversation",
+            "variable": "step_005",
+            "data_type": "any"
+          }
+        ],
+        "next_action": "run_always",
+        "disambiguation_opt_out": true
+      },
+      {
+        "type": "standard",
+        "steps": [
+          {
+            "step": "danger_word_detected",
+            "type": "standard",
+            "title": "Connect to agent",
+            "handlers": [],
+            "resolver": {
+              "type": "fallback"
+            },
+            "variable": "danger_word_detected_variable",
+            "condition": {
+              "entity": "danger_words"
+            },
+            "next_step": "profanity_detected"
+          },
+          {
+            "step": "profanity_detected",
+            "type": "standard",
+            "title": "Show warning",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "Please use appropriate language when interacting with the assistant."
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [
+              {
+                "type": "max_hits",
+                "handler": "max_hits_handler",
+                "resolver": {
+                  "type": "fallback"
+                }
+              }
+            ],
+            "max_hits": 2,
+            "resolver": {
+              "type": "end_action"
+            },
+            "variable": "profanity_detected_variable",
+            "condition": {
+              "entity": "profane_words"
+            }
+          }
+        ],
+        "title": "Trigger word detected",
+        "action": "run_always",
+        "boosts": [],
+        "handlers": [],
+        "variables": [
+          {
+            "title": "Profanity detected",
+            "variable": "danger_word_detected_variable",
+            "data_type": "any"
+          },
+          {
+            "title": "Profane word detected",
+            "variable": "profanity_detected_variable",
+            "data_type": "any"
+          }
+        ],
+        "next_action": "anything_else"
+      },
+      {
+        "type": "standard",
+        "steps": [
+          {
+            "step": "step_001",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text": "I'm afraid I don't understand. Please rephrase your question."
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "end_action"
+            },
+            "variable": "step_001",
+            "condition": {
+              "lte": [
+                {
+                  "system_variable": "no_action_matches_count"
+                },
+                {
+                  "scalar": 3
+                }
+              ]
+            },
+            "next_step": "step_002"
+          },
+          {
+            "step": "step_002",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text": ""
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "invoke_another_action_and_end",
+              "invoke_action": {
+                "action": "fallback",
+                "policy": "default",
+                "parameters": null,
+                "result_variable": "step_002_result_1",
+                "ignore_end_action_steps": false
+              }
+            },
+            "variable": "step_002",
+            "condition": {
+              "gt": [
+                {
+                  "system_variable": "no_action_matches_count"
+                },
+                {
+                  "scalar": 3
+                }
+              ]
+            }
+          }
+        ],
+        "title": "No matches",
+        "action": "anything_else",
+        "boosts": [],
+        "handlers": [],
+        "condition": {
+          "expression": "anything_else"
+        },
+        "variables": [
+          {
+            "title": "I am afraid I do not understand what you are asking, please re-p",
+            "variable": "step_001",
+            "data_type": "any"
+          },
+          {
+            "variable": "step_002",
+            "data_type": "any"
+          },
+          {
+            "variable": "step_002_result_1",
+            "data_type": "any"
+          }
+        ],
+        "disambiguation_opt_out": true
+      },
+      {
+        "type": "standard",
+        "steps": [
+          {
+            "step": "step_707",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "**Please tell me what kind of emergency you're facing.**"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential",
+                  "repeat_on_reprompt": false
+                },
+                {
+                  "options": [
+                    {
+                      "label": "Injuries & Wounds",
+                      "value": {
+                        "input": {
+                          "text": "Injuries & Wounds"
+                        }
+                      }
+                    },
+                    {
+                      "label": "Bites, Stings & Allergies",
+                      "value": {
+                        "input": {
+                          "text": "Bites, Stings & Allergies"
+                        }
+                      }
+                    },
+                    {
+                      "label": "Sudden Medical Conditions",
+                      "value": {
+                        "input": {
+                          "text": "Sudden Medical Conditions"
+                        }
+                      }
+                    },
+                    {
+                      "label": "Child-Specific or Drowning Cases",
+                      "value": {
+                        "input": {
+                          "text": "Child-Specific or Drowning Cases"
+                        }
+                      }
+                    }
+                  ],
+                  "response_type": "option",
+                  "repeat_on_reprompt": true
+                }
+              ]
+            },
+            "handlers": [
+              {
+                "type": "not_found",
+                "title": "validation_not_found_handler",
+                "output": {
+                  "generic": [
+                    {
+                      "values": [
+                        {
+                          "text_expression": {
+                            "concat": [
+                              {
+                                "scalar": "I didn't catch that. Select a valid option:"
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "response_type": "text",
+                      "selection_policy": "incremental"
+                    }
+                  ]
+                },
+                "handler": "validation_not_found_handler",
+                "resolver": {
+                  "type": "prompt_again"
+                },
+                "next_handler": "validation_not_found_max_tries_handler"
+              },
+              {
+                "type": "not_found_max_tries",
+                "title": "validation_not_found_max_tries_handler",
+                "handler": "validation_not_found_max_tries_handler",
+                "resolver": {
+                  "type": "fallback"
+                }
+              }
+            ],
+            "question": {
+              "entity": "entity_36142",
+              "max_tries": 3
+            },
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_707",
+            "next_step": "step_992"
+          },
+          {
+            "step": "step_992",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "oh no ! tell me what kind of injury or wound it is"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential",
+                  "repeat_on_reprompt": false
+                },
+                {
+                  "options": [
+                    {
+                      "label": "Cuts, Scrapes & Bleeding",
+                      "value": {
+                        "input": {
+                          "text": "Cuts, Scrapes & Bleeding"
+                        }
+                      }
+                    },
+                    {
+                      "label": "Burns & Electrocution",
+                      "value": {
+                        "input": {
+                          "text": "Burns & Electrocution"
+                        }
+                      }
+                    },
+                    {
+                      "label": "Bone & Muscle Injuries",
+                      "value": {
+                        "input": {
+                          "text": "Bone & Muscle Injuries"
+                        }
+                      }
+                    },
+                    {
+                      "label": "Intrusion in Eye, Ear, Nose, or Skin",
+                      "value": {
+                        "input": {
+                          "text": "Intrusion in Eye, Ear, Nose, or Skin"
+                        }
+                      }
+                    }
+                  ],
+                  "response_type": "option",
+                  "repeat_on_reprompt": true
+                }
+              ]
+            },
+            "handlers": [
+              {
+                "type": "not_found",
+                "title": "validation_not_found_handler",
+                "output": {
+                  "generic": [
+                    {
+                      "values": [
+                        {
+                          "text_expression": {
+                            "concat": [
+                              {
+                                "scalar": "I didn't catch that. Select a valid option:"
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "response_type": "text",
+                      "selection_policy": "incremental"
+                    }
+                  ]
+                },
+                "handler": "validation_not_found_handler",
+                "resolver": {
+                  "type": "prompt_again"
+                },
+                "next_handler": "validation_not_found_max_tries_handler"
+              },
+              {
+                "type": "not_found_max_tries",
+                "title": "validation_not_found_max_tries_handler",
+                "handler": "validation_not_found_max_tries_handler",
+                "resolver": {
+                  "type": "fallback"
+                }
+              }
+            ],
+            "question": {
+              "entity": "entity_34985",
+              "max_tries": 3
+            },
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_992",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_707"
+                },
+                {
+                  "value": "Injuries & Wounds",
+                  "from_entity": "entity_36142"
+                }
+              ]
+            },
+            "next_step": "step_901"
+          },
+          {
+            "step": "step_901",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "Got it! You're facing a cuts or bleeding issue . i want to know something more"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential",
+                  "repeat_on_reprompt": false
+                },
+                {
+                  "options": [
+                    {
+                      "label": "minor cut or scrape",
+                      "value": {
+                        "input": {
+                          "text": "minor cut or scrape"
+                        }
+                      }
+                    },
+                    {
+                      "label": "severe bleeding",
+                      "value": {
+                        "input": {
+                          "text": "severe bleeding"
+                        }
+                      }
+                    },
+                    {
+                      "label": "nosebleed",
+                      "value": {
+                        "input": {
+                          "text": "nosebleed"
+                        }
+                      }
+                    }
+                  ],
+                  "response_type": "option",
+                  "repeat_on_reprompt": true
+                }
+              ]
+            },
+            "handlers": [
+              {
+                "type": "not_found",
+                "title": "validation_not_found_handler",
+                "output": {
+                  "generic": [
+                    {
+                      "values": [
+                        {
+                          "text_expression": {
+                            "concat": [
+                              {
+                                "scalar": "I didn't catch that. Select a valid option:"
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "response_type": "text",
+                      "selection_policy": "incremental"
+                    }
+                  ]
+                },
+                "handler": "validation_not_found_handler",
+                "resolver": {
+                  "type": "prompt_again"
+                },
+                "next_handler": "validation_not_found_max_tries_handler"
+              },
+              {
+                "type": "not_found_max_tries",
+                "title": "validation_not_found_max_tries_handler",
+                "handler": "validation_not_found_max_tries_handler",
+                "resolver": {
+                  "type": "fallback"
+                }
+              }
+            ],
+            "question": {
+              "entity": "entity_37067",
+              "max_tries": 3
+            },
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_901",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_992"
+                },
+                {
+                  "value": "Cuts, Scrapes & Bleeding",
+                  "from_entity": "entity_34985"
+                }
+              ]
+            },
+            "next_step": "step_906"
+          },
+          {
+            "step": "step_906",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "> 😟 *Oh no, looks like it's a minor cut! Don't worry — stay calm.*\n🩹 *Here's what you can do step-by-step:*\n\n\n\n> 1️⃣ Wash your hands properly.\n2️⃣ Clean the wound gently with water.\n3️⃣ Apply antiseptic.\n4️⃣ Cover with a clean bandage.\n\n\n\n**💡 And remember, if it starts looking red or swollen later, see a doctor.**"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_906",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_901"
+                },
+                {
+                  "value": "minor cut or scrape",
+                  "from_entity": "entity_37067"
+                }
+              ]
+            },
+            "next_step": "step_584"
+          },
+          {
+            "step": "step_584",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "⚠️ *This looks serious. Please don’t panic — just follow these steps quickly:*\n\n1️⃣ **Apply firm pressure** on the wound using a clean cloth or bandage.\n2️⃣ **Do not lift the cloth** to check — if it soaks, place another one on top.\n3️⃣ **Raise the injured area** above the heart level, if possible.\n4️⃣ **Keep the person still and calm.**\n5️⃣ If bleeding doesn’t stop within **10 minutes**,"
+                          },
+                          {
+                            "scalar": " or it’s **spurting**,\n👉 **Call emergency services immediately.**"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_584",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_901"
+                },
+                {
+                  "value": "severe bleeding",
+                  "from_entity": "entity_37067"
+                }
+              ]
+            },
+            "next_step": "step_807"
+          },
+          {
+            "step": "step_807",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "😮 *Nosebleeds can be scary, but they’re usually not dangerous. Stay calm — I’ll guide you!*\n\n1️⃣ **Sit upright** and **lean slightly forward**. Don’t lie down.\n2️⃣ **Pinch the soft part of your nose**, just below the bridge.\n3️⃣ Hold it **firmly for 10 minutes** — breathe through your mouth.\n4️⃣ You can place a **cold pack** on the back of the neck or bridge of the nose."
+                          },
+                          {
+                            "scalar": "\n\n⚠️ *Do NOT tilt your head back or lie flat — it can cause blood to go down the throat.*\n\n⏱️ *If bleeding doesn’t stop after 15–20 minutes,*\n👉 *Seek medical help immediately.*"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "context": {
+              "variables": []
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_807",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_901"
+                },
+                {
+                  "value": "nosebleed",
+                  "from_entity": "entity_37067"
+                }
+              ]
+            },
+            "next_step": "step_530"
+          },
+          {
+            "step": "step_530",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "Is it a Burn or Electrocution"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential",
+                  "repeat_on_reprompt": false
+                },
+                {
+                  "options": [
+                    {
+                      "label": "Burn ",
+                      "value": {
+                        "input": {
+                          "text": "Burn "
+                        }
+                      }
+                    },
+                    {
+                      "label": "Electrocution",
+                      "value": {
+                        "input": {
+                          "text": "Electrocution"
+                        }
+                      }
+                    }
+                  ],
+                  "response_type": "option",
+                  "repeat_on_reprompt": true
+                }
+              ]
+            },
+            "handlers": [
+              {
+                "type": "not_found",
+                "title": "validation_not_found_handler",
+                "output": {
+                  "generic": [
+                    {
+                      "values": [
+                        {
+                          "text_expression": {
+                            "concat": [
+                              {
+                                "scalar": "I didn't catch that. Select a valid option:"
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "response_type": "text",
+                      "selection_policy": "incremental"
+                    }
+                  ]
+                },
+                "handler": "validation_not_found_handler",
+                "resolver": {
+                  "type": "prompt_again"
+                },
+                "next_handler": "validation_not_found_max_tries_handler"
+              },
+              {
+                "type": "not_found_max_tries",
+                "title": "validation_not_found_max_tries_handler",
+                "handler": "validation_not_found_max_tries_handler",
+                "resolver": {
+                  "type": "fallback"
+                }
+              }
+            ],
+            "question": {
+              "entity": "entity_33154",
+              "max_tries": 3
+            },
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_530",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_992"
+                },
+                {
+                  "value": "Burns & Electrocution",
+                  "from_entity": "entity_34985"
+                }
+              ]
+            },
+            "next_step": "step_957"
+          },
+          {
+            "step": "step_957",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "**Oh no! A burn can really hurt. Here's what you should do right away:**\n\n1️⃣ Cool the area with clean, running water for 10–20 minutes.\n2️⃣ Don’t use ice, butter, oil, or toothpaste — they can make it worse.\n3️⃣ Gently apply aloe vera gel or a clean, non-sticky dressing.\n4️⃣ Take a mild painkiller if needed.\n🚨 If blisters form or the burn is large, please seek medical help."
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_957",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_530"
+                },
+                {
+                  "value": "Burn ",
+                  "from_entity": "entity_33154"
+                }
+              ]
+            },
+            "next_step": "step_436"
+          },
+          {
+            "step": "step_436",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "**⚡ Stay calm — electrical injuries can be serious. Follow these steps:**\n\n1️⃣ Don’t touch the person if they’re still in contact with power!\n2️⃣ Turn off the power source (main switch or unplug if safe).\n3️⃣ Once safe, check if they’re conscious and breathing.\n4️⃣ If unresponsive, start CPR if trained.\n🚑 Call emergency services immediately.\n✅ Even if they seem fine, they need to see a doctor."
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_436",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_530"
+                },
+                {
+                  "value": "Electrocution",
+                  "from_entity": "entity_33154"
+                }
+              ]
+            },
+            "next_step": "step_225"
+          },
+          {
+            "step": "step_225",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "Got it — you're dealing with a muscle or bone injury. Let's figure out the best steps. Please select:"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential",
+                  "repeat_on_reprompt": false
+                },
+                {
+                  "options": [
+                    {
+                      "label": "Sprain or Strain",
+                      "value": {
+                        "input": {
+                          "text": "Sprain or Strain"
+                        }
+                      }
+                    },
+                    {
+                      "label": "Suspected Fracture (Broken Bone)",
+                      "value": {
+                        "input": {
+                          "text": "Suspected Fracture (Broken Bone)"
+                        }
+                      }
+                    },
+                    {
+                      "label": "Dislocation",
+                      "value": {
+                        "input": {
+                          "text": "Dislocation"
+                        }
+                      }
+                    },
+                    {
+                      "label": "Muscle Cramp",
+                      "value": {
+                        "input": {
+                          "text": "Muscle Cramp"
+                        }
+                      }
+                    }
+                  ],
+                  "response_type": "option",
+                  "repeat_on_reprompt": true
+                }
+              ]
+            },
+            "handlers": [
+              {
+                "type": "not_found",
+                "title": "validation_not_found_handler",
+                "output": {
+                  "generic": [
+                    {
+                      "values": [
+                        {
+                          "text_expression": {
+                            "concat": [
+                              {
+                                "scalar": "I didn't catch that. Select a valid option:"
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "response_type": "text",
+                      "selection_policy": "incremental"
+                    }
+                  ]
+                },
+                "handler": "validation_not_found_handler",
+                "resolver": {
+                  "type": "prompt_again"
+                },
+                "next_handler": "validation_not_found_max_tries_handler"
+              },
+              {
+                "type": "not_found_max_tries",
+                "title": "validation_not_found_max_tries_handler",
+                "handler": "validation_not_found_max_tries_handler",
+                "resolver": {
+                  "type": "fallback"
+                }
+              }
+            ],
+            "question": {
+              "entity": "entity_9951",
+              "max_tries": 3
+            },
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_225",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_992"
+                },
+                {
+                  "value": "Bone & Muscle Injuries",
+                  "from_entity": "entity_34985"
+                }
+              ]
+            },
+            "next_step": "step_141"
+          },
+          {
+            "step": "step_141",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "**🦶 A sprain or strain? No worries — follow the R.I.C.E. method:**\n\n🔹 Rest: Stop using the injured area.\n🔹 Ice: Apply an ice pack (wrapped in cloth) for 15–20 mins every 2–3 hours.\n🔹 Compression: Use an elastic bandage to reduce swelling.\n🔹 Elevation: Raise the injured limb above heart level.\n\n⚠️ If swelling doesn’t go down or you can't move it, see a doctor."
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_141",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_225"
+                },
+                {
+                  "value": "Sprain or Strain",
+                  "from_entity": "entity_9951"
+                }
+              ]
+            },
+            "next_step": "step_385"
+          },
+          {
+            "step": "step_385",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "**🦴 Suspect a fracture? Act carefully:**\n\n1️⃣ Don’t move the injured area.\n2️⃣ Support it using a splint or soft padding.\n3️⃣ Apply ice to reduce swelling (avoid placing directly on skin).\n4️⃣ Call for medical help or go to the nearest hospital.\n\n❌ Do not try to straighten the bone or push it back."
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_385",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_225"
+                },
+                {
+                  "value": "Suspected Fracture (Broken Bone)",
+                  "from_entity": "entity_9951"
+                }
+              ]
+            },
+            "next_step": "step_681"
+          },
+          {
+            "step": "step_681",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "**💪 Dislocation can be painful — here's what to do:**\n\n1️⃣ Don’t try to pop the joint back in!\n2️⃣ Support the area in a comfortable position using a sling.\n3️⃣ Apply ice to reduce pain and swelling.\n4️⃣ Get medical help immediately.\n\n✅ Keep the person still and calm."
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_681",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_225"
+                },
+                {
+                  "value": "Dislocation",
+                  "from_entity": "entity_9951"
+                }
+              ]
+            },
+            "next_step": "step_164"
+          },
+          {
+            "step": "step_164",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "😣 **Cramp? Let’s ease it out:**\n\n1️⃣ Gently stretch the muscle (e.g., leg stretch for leg cramp).\n2️⃣ Massage the area slowly.\n3️⃣ Apply a warm towel or heating pad.\n4️⃣ Drink water — cramps can be due to dehydration.\n\nIf cramps are frequent, the person should consult a doctor."
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_164",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_225"
+                },
+                {
+                  "value": "Muscle Cramp",
+                  "from_entity": "entity_9951"
+                }
+              ]
+            },
+            "next_step": "step_359"
+          },
+          {
+            "step": "step_359",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "Looks like something has accidentally entered the body. Where is it?"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential",
+                  "repeat_on_reprompt": false
+                },
+                {
+                  "options": [
+                    {
+                      "label": "Eye",
+                      "value": {
+                        "input": {
+                          "text": "Eye"
+                        }
+                      }
+                    },
+                    {
+                      "label": "Ear",
+                      "value": {
+                        "input": {
+                          "text": "Ear"
+                        }
+                      }
+                    },
+                    {
+                      "label": "Skin",
+                      "value": {
+                        "input": {
+                          "text": "Skin"
+                        }
+                      }
+                    },
+                    {
+                      "label": "Nose",
+                      "value": {
+                        "input": {
+                          "text": "Nose"
+                        }
+                      }
+                    }
+                  ],
+                  "response_type": "option",
+                  "repeat_on_reprompt": true
+                }
+              ]
+            },
+            "handlers": [
+              {
+                "type": "not_found",
+                "title": "validation_not_found_handler",
+                "output": {
+                  "generic": [
+                    {
+                      "values": [
+                        {
+                          "text_expression": {
+                            "concat": [
+                              {
+                                "scalar": "I didn't catch that. Select a valid option:"
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "response_type": "text",
+                      "selection_policy": "incremental"
+                    }
+                  ]
+                },
+                "handler": "validation_not_found_handler",
+                "resolver": {
+                  "type": "prompt_again"
+                },
+                "next_handler": "validation_not_found_max_tries_handler"
+              },
+              {
+                "type": "not_found_max_tries",
+                "title": "validation_not_found_max_tries_handler",
+                "handler": "validation_not_found_max_tries_handler",
+                "resolver": {
+                  "type": "fallback"
+                }
+              }
+            ],
+            "question": {
+              "entity": "entity_16082",
+              "max_tries": 3
+            },
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_359",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_992"
+                },
+                {
+                  "value": "Intrusion in Eye, Ear, Nose, or Skin",
+                  "from_entity": "entity_34985"
+                }
+              ]
+            },
+            "next_step": "step_749"
+          },
+          {
+            "step": "step_749",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "**👁️ Got something in the eye? Here's what to do:**\n\n1️⃣ Do NOT rub the eye.\n2️⃣ Blink rapidly or gently flush the eye with clean water or saline.\n3️⃣ Tilt head and pour water from the inner corner outward.\n4️⃣ If it doesn't come out or causes pain, cover the eye lightly and see a doctor.\n\n⚠️ Never try to remove a stuck object with fingers or tools."
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_749",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_359"
+                },
+                {
+                  "value": "Eye",
+                  "from_entity": "entity_16082"
+                }
+              ]
+            },
+            "next_step": "step_773"
+          },
+          {
+            "step": "step_773",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "**👂 Something stuck in the ear? Follow this:**\n\n1️⃣ Don't poke or insert anything inside.\n2️⃣ Tilt the head and gently shake — sometimes it falls out.\n3️⃣ For bugs: turn the ear upward and pour a little warm (not hot) oil to float it out.\n4️⃣ Still stuck? Visit a doctor. Don’t delay.\n\n⚠️ Trying to remove it forcefully can cause damage."
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_773",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_359"
+                },
+                {
+                  "value": "Ear",
+                  "from_entity": "entity_16082"
+                }
+              ]
+            },
+            "next_step": "step_499"
+          },
+          {
+            "step": "step_499",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "**🩹 Got a splinter or glass piece in the skin?**\n\n1️⃣ Wash your hands and the area with soap.\n2️⃣ Use clean tweezers to gently pull it out if visible.\n3️⃣ Clean again and apply antiseptic & bandage.\n4️⃣ If deeply embedded or painful — see a doctor.\n\n⚠️ Don’t dig into the skin to remove hidden objects."
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_499",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_359"
+                },
+                {
+                  "value": "Skin",
+                  "from_entity": "entity_16082"
+                }
+              ]
+            },
+            "next_step": "step_232"
+          },
+          {
+            "step": "step_232",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "**👃 Object in the nose? Try this:**\n\n1️⃣ Ask the person to breathe through the mouth.\n2️⃣ Gently blow the nose while closing the other nostril.\n3️⃣ Don’t use tweezers or poke inside.\n4️⃣ If it doesn’t come out — head to a doctor immediately.\n\n🚫 Avoid using any liquids or sprays without medical advice."
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_232",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_359"
+                },
+                {
+                  "value": "Nose",
+                  "from_entity": "entity_16082"
+                }
+              ]
+            },
+            "next_step": "step_643"
+          },
+          {
+            "step": "step_643",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "Okay, I can help with bites and stings. Please tell me what kind it is:"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential",
+                  "repeat_on_reprompt": false
+                },
+                {
+                  "options": [
+                    {
+                      "label": "Insect sting or bite (bee, spider, mosquito, etc.)",
+                      "value": {
+                        "input": {
+                          "text": "Insect sting or bite (bee, spider, mosquito, etc.)"
+                        }
+                      }
+                    },
+                    {
+                      "label": "Dog or animal bite",
+                      "value": {
+                        "input": {
+                          "text": "Dog or animal bite"
+                        }
+                      }
+                    },
+                    {
+                      "label": "Snake bite",
+                      "value": {
+                        "input": {
+                          "text": "Snake bite"
+                        }
+                      }
+                    }
+                  ],
+                  "response_type": "option",
+                  "repeat_on_reprompt": true
+                }
+              ]
+            },
+            "handlers": [
+              {
+                "type": "not_found",
+                "title": "validation_not_found_handler",
+                "output": {
+                  "generic": [
+                    {
+                      "values": [
+                        {
+                          "text_expression": {
+                            "concat": [
+                              {
+                                "scalar": "I didn't catch that. Select a valid option:"
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "response_type": "text",
+                      "selection_policy": "incremental"
+                    }
+                  ]
+                },
+                "handler": "validation_not_found_handler",
+                "resolver": {
+                  "type": "prompt_again"
+                },
+                "next_handler": "validation_not_found_max_tries_handler"
+              },
+              {
+                "type": "not_found_max_tries",
+                "title": "validation_not_found_max_tries_handler",
+                "handler": "validation_not_found_max_tries_handler",
+                "resolver": {
+                  "type": "fallback"
+                }
+              }
+            ],
+            "question": {
+              "entity": "entity_45422",
+              "max_tries": 3
+            },
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_643",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_707"
+                },
+                {
+                  "value": "Bites, Stings & Allergies",
+                  "from_entity": "entity_36142"
+                }
+              ]
+            },
+            "next_step": "step_789"
+          },
+          {
+            "step": "step_789",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "Oh ! it's an insect bite or sting, do this calmly. \n\n1️⃣ **Remove the stinger** if visible (use tweezers, not fingers).\n2️⃣ **Wash the area** with soap and water.\n3️⃣ **Apply a cold pack** to reduce swelling.\n4️⃣ If there's **itching**, apply calamine lotion or an antihistamine cream.\n\n⚠️ *If you see trouble breathing, swelling on face/throat, or dizziness — call emergency help right away."
+                          },
+                          {
+                            "scalar": " This might be an allergic reaction.*"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_789",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_643"
+                },
+                {
+                  "value": "Insect sting or bite (bee, spider, mosquito, etc.)",
+                  "from_entity": "entity_45422"
+                }
+              ]
+            },
+            "next_step": "step_878"
+          },
+          {
+            "step": "step_878",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "***it’s a bite from an animal:***\n\n1️⃣ **Wash the wound thoroughly** with soap and clean water for at least 5 minutes.\n2️⃣ **Apply antiseptic** (Betadine/Savlon).\n3️⃣ Cover with a sterile bandage.\n4️⃣ **Visit a doctor immediately** — rabies vaccination may be needed.\n\n💡 *Even small bites can be serious. Don’t skip medical help.*"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_878",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_643"
+                },
+                {
+                  "value": "Dog or animal bite",
+                  "from_entity": "entity_45422"
+                }
+              ]
+            },
+            "next_step": "step_722"
+          },
+          {
+            "step": "step_722",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "*it's a snake bite, stay calm and do the following:*\n\n1️⃣ **Keep the bitten part still and lower than the heart.**\n2️⃣ **Don’t walk or run** — ask for help to reach medical care.\n3️⃣ **Do NOT suck the venom**, cut the wound, or apply ice.\n4️⃣ **Remove tight items** like rings or bracelets.\n\n🚑 *Go to the hospital immediately."
+                          },
+                          {
+                            "scalar": "*\n🧪 *Try to remember the color or shape of the snake — this can help doctors.*"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_722",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_643"
+                },
+                {
+                  "value": "Snake bite",
+                  "from_entity": "entity_45422"
+                }
+              ]
+            },
+            "next_step": "step_336"
+          },
+          {
+            "step": "step_336",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "⚠️ *I understand it's a sudden medical problem. Please select the condition:*"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential",
+                  "repeat_on_reprompt": false
+                },
+                {
+                  "options": [
+                    {
+                      "label": "Fainting or unconsciousness",
+                      "value": {
+                        "input": {
+                          "text": "Fainting or unconsciousness"
+                        }
+                      }
+                    },
+                    {
+                      "label": "Heart attack signs",
+                      "value": {
+                        "input": {
+                          "text": "Heart attack signs"
+                        }
+                      }
+                    },
+                    {
+                      "label": "Seizure (fits)",
+                      "value": {
+                        "input": {
+                          "text": "Seizure (fits)"
+                        }
+                      }
+                    },
+                    {
+                      "label": "Stroke warning signs",
+                      "value": {
+                        "input": {
+                          "text": "Stroke warning signs"
+                        }
+                      }
+                    }
+                  ],
+                  "response_type": "option",
+                  "repeat_on_reprompt": true
+                }
+              ]
+            },
+            "handlers": [
+              {
+                "type": "not_found",
+                "title": "validation_not_found_handler",
+                "output": {
+                  "generic": [
+                    {
+                      "values": [
+                        {
+                          "text_expression": {
+                            "concat": [
+                              {
+                                "scalar": "I didn't catch that. Select a valid option:"
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "response_type": "text",
+                      "selection_policy": "incremental"
+                    }
+                  ]
+                },
+                "handler": "validation_not_found_handler",
+                "resolver": {
+                  "type": "prompt_again"
+                },
+                "next_handler": "validation_not_found_max_tries_handler"
+              },
+              {
+                "type": "not_found_max_tries",
+                "title": "validation_not_found_max_tries_handler",
+                "handler": "validation_not_found_max_tries_handler",
+                "resolver": {
+                  "type": "fallback"
+                }
+              }
+            ],
+            "question": {
+              "entity": "entity_47975",
+              "max_tries": 3
+            },
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_336",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_707"
+                },
+                {
+                  "value": "Sudden Medical Conditions",
+                  "from_entity": "entity_36142"
+                }
+              ]
+            },
+            "next_step": "step_744"
+          },
+          {
+            "step": "step_744",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "*If someone faints or becomes unconscious:*\n\n1️⃣ **Lay them down flat** and **raise their legs** slightly.\n2️⃣ **Loosen tight clothing** (collars, belts).\n3️⃣ **Check for breathing** — if normal, let them rest.\n4️⃣ **Do NOT splash water** or crowd around.\n\n🚨 *If they don’t regain consciousness in 1 minute,"
+                          },
+                          {
+                            "scalar": " or stop breathing — call emergency help*\n\n**G*iven below is*** **National Ambulance Service (NAS) Number** ***:- 102***"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_744",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_336"
+                },
+                {
+                  "value": "Fainting or unconsciousness",
+                  "from_entity": "entity_47975"
+                }
+              ]
+            },
+            "next_step": "step_641"
+          },
+          {
+            "step": "step_641",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "❤️ *If someone has chest pain and you suspect a heart attack:*\n\n1️⃣ Ask them to **sit down and stay calm**.\n2️⃣ If available, give them **one Aspirin** (unless allergic).\n3️⃣ **Loosen tight clothes** and reassure them.\n4️⃣ **Call emergency services immediately .**\n\n⚠️ *Do NOT give water or food.*\n\n***TRY TO GET A DOCTOR AS SOON AS POSSIBLE***"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                },
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "**G*iven below is*** **National Ambulance Service (NAS) Number** ***:- 102***"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_641",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_336"
+                },
+                {
+                  "value": "Heart attack signs",
+                  "from_entity": "entity_47975"
+                }
+              ]
+            },
+            "next_step": "step_113"
+          },
+          {
+            "step": "step_113",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "⚡ *If someone is having a seizure:*\n\n1️⃣ **Stay calm** and **do not hold them down**.\n2️⃣ **Clear the area** to prevent injury.\n3️⃣ **Turn them on their side** after the seizure ends.\n4️⃣ **Do not put anything in their mouth.**\n\n**⏱️** ***If seizure lasts more than 5 minutes — seek emergency help.***"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                },
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "**G*iven below is*** **National Ambulance Service (NAS) Number** ***:- 102***"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_113",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_336"
+                },
+                {
+                  "value": "Seizure (fits)",
+                  "from_entity": "entity_47975"
+                }
+              ]
+            },
+            "next_step": "step_507"
+          },
+          {
+            "step": "step_507",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "**🧠** ***Think FAST:***\n\n\n  - **Face drooping?**\n  - **Arm weakness?**\n  - **Speech difficulty?**\n  - **Time to call help!**\n\n**1️⃣ Call emergency services immediately.**\n\n```\n   **G*iven below is*** **National Ambulance Service (NAS) Number** ***:- 102***\n```\n**2️⃣ Keep the person calm and seated upright.\n3️⃣ Do not give food, water, or medicine unless told."
+                          },
+                          {
+                            "scalar": "**\n\n**⏱️** ***Acting fast can save brain function.***"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_507",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_336"
+                },
+                {
+                  "value": "Stroke warning signs",
+                  "from_entity": "entity_47975"
+                }
+              ]
+            },
+            "next_step": "step_474"
+          },
+          {
+            "step": "step_474",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "**Please choose the condition you are facing:**"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential",
+                  "repeat_on_reprompt": false
+                },
+                {
+                  "options": [
+                    {
+                      "label": "Child-specific",
+                      "value": {
+                        "input": {
+                          "text": "Child-specific"
+                        }
+                      }
+                    },
+                    {
+                      "label": "Drowning-Case",
+                      "value": {
+                        "input": {
+                          "text": "Drowning-Case"
+                        }
+                      }
+                    }
+                  ],
+                  "response_type": "option",
+                  "repeat_on_reprompt": true
+                }
+              ]
+            },
+            "handlers": [
+              {
+                "type": "not_found",
+                "title": "validation_not_found_handler",
+                "output": {
+                  "generic": [
+                    {
+                      "values": [
+                        {
+                          "text_expression": {
+                            "concat": [
+                              {
+                                "scalar": "I didn't catch that. Select a valid option:"
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "response_type": "text",
+                      "selection_policy": "incremental"
+                    }
+                  ]
+                },
+                "handler": "validation_not_found_handler",
+                "resolver": {
+                  "type": "prompt_again"
+                },
+                "next_handler": "validation_not_found_max_tries_handler"
+              },
+              {
+                "type": "not_found_max_tries",
+                "title": "validation_not_found_max_tries_handler",
+                "handler": "validation_not_found_max_tries_handler",
+                "resolver": {
+                  "type": "fallback"
+                }
+              }
+            ],
+            "question": {
+              "entity": "entity_40267",
+              "max_tries": 3
+            },
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_474",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_707"
+                },
+                {
+                  "value": "Child-Specific or Drowning Cases",
+                  "from_entity": "entity_36142"
+                }
+              ]
+            },
+            "next_step": "step_575"
+          },
+          {
+            "step": "step_575",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "**Please choose the condition your child :**"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential",
+                  "repeat_on_reprompt": false
+                },
+                {
+                  "options": [
+                    {
+                      "label": "Choking or Swallowing Objects",
+                      "value": {
+                        "input": {
+                          "text": "Choking or Swallowing Objects"
+                        }
+                      }
+                    },
+                    {
+                      "label": "Burns / Hot Liquid Scalds",
+                      "value": {
+                        "input": {
+                          "text": "Burns / Hot Liquid Scalds"
+                        }
+                      }
+                    },
+                    {
+                      "label": "Fever or Seizure (Febrile Seizure)",
+                      "value": {
+                        "input": {
+                          "text": "Fever or Seizure (Febrile Seizure)"
+                        }
+                      }
+                    },
+                    {
+                      "label": "Falls / Head Bump / Nosebleed",
+                      "value": {
+                        "input": {
+                          "text": "Falls / Head Bump / Nosebleed"
+                        }
+                      }
+                    }
+                  ],
+                  "response_type": "option",
+                  "repeat_on_reprompt": true
+                }
+              ]
+            },
+            "handlers": [
+              {
+                "type": "not_found",
+                "title": "validation_not_found_handler",
+                "output": {
+                  "generic": [
+                    {
+                      "values": [
+                        {
+                          "text_expression": {
+                            "concat": [
+                              {
+                                "scalar": "I didn't catch that. Select a valid option:"
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "response_type": "text",
+                      "selection_policy": "incremental"
+                    }
+                  ]
+                },
+                "handler": "validation_not_found_handler",
+                "resolver": {
+                  "type": "prompt_again"
+                },
+                "next_handler": "validation_not_found_max_tries_handler"
+              },
+              {
+                "type": "not_found_max_tries",
+                "title": "validation_not_found_max_tries_handler",
+                "handler": "validation_not_found_max_tries_handler",
+                "resolver": {
+                  "type": "fallback"
+                }
+              }
+            ],
+            "question": {
+              "entity": "entity_11931",
+              "max_tries": 3
+            },
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_575",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_474"
+                },
+                {
+                  "value": "Child-specific",
+                  "from_entity": "entity_40267"
+                }
+              ]
+            },
+            "next_step": "step_560"
+          },
+          {
+            "step": "step_560",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "**What's your child age ?**"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential",
+                  "repeat_on_reprompt": false
+                },
+                {
+                  "options": [
+                    {
+                      "label": "🍼 For Infants (under 1 year)",
+                      "value": {
+                        "input": {
+                          "text": "🍼 For Infants (under 1 year)"
+                        }
+                      }
+                    },
+                    {
+                      "label": "🧒 For Children (1 year and older)",
+                      "value": {
+                        "input": {
+                          "text": "🧒 For Children (1 year and older)"
+                        }
+                      }
+                    }
+                  ],
+                  "response_type": "option",
+                  "repeat_on_reprompt": true
+                }
+              ]
+            },
+            "handlers": [
+              {
+                "type": "not_found",
+                "title": "validation_not_found_handler",
+                "output": {
+                  "generic": [
+                    {
+                      "values": [
+                        {
+                          "text_expression": {
+                            "concat": [
+                              {
+                                "scalar": "I didn't catch that. Select a valid option:"
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "response_type": "text",
+                      "selection_policy": "incremental"
+                    }
+                  ]
+                },
+                "handler": "validation_not_found_handler",
+                "resolver": {
+                  "type": "prompt_again"
+                },
+                "next_handler": "validation_not_found_max_tries_handler"
+              },
+              {
+                "type": "not_found_max_tries",
+                "title": "validation_not_found_max_tries_handler",
+                "handler": "validation_not_found_max_tries_handler",
+                "resolver": {
+                  "type": "fallback"
+                }
+              }
+            ],
+            "question": {
+              "entity": "entity_13018",
+              "max_tries": 3
+            },
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_560",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_575"
+                },
+                {
+                  "value": "Choking or Swallowing Objects",
+                  "from_entity": "entity_11931"
+                }
+              ]
+            },
+            "next_step": "step_561"
+          },
+          {
+            "step": "step_561",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "> ⚠️ **If the baby is silent, turning red/blue, or not breathing:**\n\n\n\n\n  1. **Lay the baby face down** on your forearm.\n  2. Give **5 back blows** between the shoulder blades using the heel of your hand.\n  3. Turn the baby face up and give **5 chest thrusts** using two fingers (same as CPR, but gentler).\n  4. Repeat until the object is expelled or help arrives.\n  5."
+                          },
+                          {
+                            "scalar": " Call emergency services if unresponsive."
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_561",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_560"
+                },
+                {
+                  "value": "🍼 For Infants (under 1 year)",
+                  "from_entity": "entity_13018"
+                }
+              ]
+            },
+            "next_step": "step_920"
+          },
+          {
+            "step": "step_920",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "> ⚠️ *If the child cannot talk, breathe, or is clutching the throat:*\n\n\n\n\n  1. Ask, *\"Are you choking?\"* If yes, proceed.\n  2. Stand behind them, make a fist, and place it just above their belly button.\n  3. Give **5 abdominal thrusts (Heimlich maneuver)** inward and upward.\n  4. Repeat until the object comes out.\n  5. If the child becomes unconscious → start **CPR** and call emergency services."
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_920",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_560"
+                },
+                {
+                  "value": "🧒 For Children (1 year and older)",
+                  "from_entity": "entity_13018"
+                }
+              ]
+            },
+            "next_step": "step_924"
+          },
+          {
+            "step": "step_924",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "> **🔥 If a child is burned by hot water, food, or objects:**\n\n\n\n\n  1. **Immediately run cool (not ice-cold) water** over the area for **10-20 minutes**.\n  2. Do **not apply ice, toothpaste, or butter**.\n  3. Cover the burn loosely with a **clean cloth or sterile dressing**.\n  4. **Do not break blisters.**\n  5. Take the child to a doctor if:\n‣ The burn is deep\n‣ On face, hands,"
+                          },
+                          {
+                            "scalar": " genitals\n‣ Larger than the child’s palm"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_924",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_575"
+                },
+                {
+                  "value": "Burns / Hot Liquid Scalds",
+                  "from_entity": "entity_11931"
+                }
+              ]
+            },
+            "next_step": "step_647"
+          },
+          {
+            "step": "step_647",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "> 🌡️ *If the child has high fever (over 100.4°F or 38°C):*\n\n\n\n\n  1. Use a thermometer to check the temperature.\n  2. **Use a cold compress** on the forehead.\n  3. Give **paracetamol** or doctor-recommended fever medicine.\n  4. **Keep child hydrated** – give water, ORS, or fluids.\n  5. Do **not overdress** – keep clothing light."
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential",
+                  "repeat_on_reprompt": false
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_647",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_575"
+                },
+                {
+                  "value": "Fever or Seizure (Febrile Seizure)",
+                  "from_entity": "entity_11931"
+                }
+              ]
+            },
+            "next_step": "step_149"
+          },
+          {
+            "step": "step_149",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "**Does the child has a febrile seizure**"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential",
+                  "repeat_on_reprompt": false
+                },
+                {
+                  "options": [
+                    {
+                      "label": "Yes",
+                      "value": {
+                        "input": {
+                          "text": "Yes"
+                        }
+                      }
+                    }
+                  ],
+                  "response_type": "option",
+                  "repeat_on_reprompt": true
+                }
+              ]
+            },
+            "handlers": [
+              {
+                "type": "not_found",
+                "title": "validation_not_found_handler",
+                "output": {
+                  "generic": [
+                    {
+                      "values": [
+                        {
+                          "text_expression": {
+                            "concat": [
+                              {
+                                "scalar": "I didn't catch that. Select a valid option:"
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "response_type": "text",
+                      "selection_policy": "incremental"
+                    }
+                  ]
+                },
+                "handler": "validation_not_found_handler",
+                "resolver": {
+                  "type": "prompt_again"
+                },
+                "next_handler": "validation_not_found_max_tries_handler"
+              },
+              {
+                "type": "not_found_max_tries",
+                "title": "validation_not_found_max_tries_handler",
+                "handler": "validation_not_found_max_tries_handler",
+                "resolver": {
+                  "type": "fallback"
+                }
+              }
+            ],
+            "question": {
+              "entity": "entity_40022",
+              "max_tries": 3
+            },
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_149",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_575"
+                },
+                {
+                  "value": "Fever or Seizure (Febrile Seizure)",
+                  "from_entity": "entity_11931"
+                }
+              ]
+            },
+            "next_step": "step_760"
+          },
+          {
+            "step": "step_760",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "### ⚠️ *If the child has a febrile seizure:*\n\n  1. **Lay the child on their side** to prevent choking.\n  2. **Do not hold or shake them.**\n  3. **Do not put anything in their mouth.**\n  4. Once the seizure ends (usually < 5 mins), let them rest.\n  5. **Visit a doctor immediately.**"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_760",
+            "condition": {
+              "exists": {
+                "variable": "step_149"
+              }
+            },
+            "next_step": "step_234"
+          },
+          {
+            "step": "step_234",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "Is it a Falls / Head Bump or Nosebleed"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential",
+                  "repeat_on_reprompt": false
+                },
+                {
+                  "options": [
+                    {
+                      "label": "🤕 Head Injury / Fall",
+                      "value": {
+                        "input": {
+                          "text": "🤕 Head Injury / Fall"
+                        }
+                      }
+                    },
+                    {
+                      "label": "👃 Nosebleed",
+                      "value": {
+                        "input": {
+                          "text": "👃 Nosebleed"
+                        }
+                      }
+                    }
+                  ],
+                  "response_type": "option",
+                  "repeat_on_reprompt": true
+                }
+              ]
+            },
+            "handlers": [
+              {
+                "type": "not_found",
+                "title": "validation_not_found_handler",
+                "output": {
+                  "generic": [
+                    {
+                      "values": [
+                        {
+                          "text_expression": {
+                            "concat": [
+                              {
+                                "scalar": "I didn't catch that. Select a valid option:"
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "response_type": "text",
+                      "selection_policy": "incremental"
+                    }
+                  ]
+                },
+                "handler": "validation_not_found_handler",
+                "resolver": {
+                  "type": "prompt_again"
+                },
+                "next_handler": "validation_not_found_max_tries_handler"
+              },
+              {
+                "type": "not_found_max_tries",
+                "title": "validation_not_found_max_tries_handler",
+                "handler": "validation_not_found_max_tries_handler",
+                "resolver": {
+                  "type": "fallback"
+                }
+              }
+            ],
+            "question": {
+              "entity": "entity_24617",
+              "max_tries": 3
+            },
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_234",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_575"
+                },
+                {
+                  "value": "Falls / Head Bump / Nosebleed",
+                  "from_entity": "entity_11931"
+                }
+              ]
+            },
+            "next_step": "step_161"
+          },
+          {
+            "step": "step_161",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "🤕 Head Injury / Fall:\n\n> 🧠 *If the child falls or bumps their head:*\n\n\n\n\n  1. Apply a **cold pack** on the bump to reduce swelling.\n  2. Watch for **vomiting, dizziness, confusion, or drowsiness** — seek medical help if these appear.\n  3. Keep the child awake for a while and monitor.\n  4. If unconscious or bleeding from ear/nose → call emergency help"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_161",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_234"
+                },
+                {
+                  "value": "🤕 Head Injury / Fall",
+                  "from_entity": "entity_24617"
+                }
+              ]
+            },
+            "next_step": "step_397"
+          },
+          {
+            "step": "step_397",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "👃 Nosebleed:\n\n<br />\n\n\n\n\n  1. **Sit the child upright** and lean their head **slightly forward**.\n  2. Pinch their nostrils together and hold for **10 minutes**.\n  3. **Don’t tilt the head back.**\n  4. Apply a **cold compress** to the bridge of the nose.\n  5. If bleeding doesn’t stop in 20 minutes → see a doctor."
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_397",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_234"
+                },
+                {
+                  "value": "👃 Nosebleed",
+                  "from_entity": "entity_24617"
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Sahayata",
+        "action": "action_45105",
+        "boosts": [],
+        "handlers": [],
+        "condition": {
+          "intent": "action_45105_intent_17150"
+        },
+        "variables": [
+          {
+            "title": "⚡ *If someone is having a seizure:* 1️⃣ **Stay calm** and **do n",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_113",
+            "data_type": "any"
+          },
+          {
+            "title": "**🦶 A sprain or strain? No worries — follow the R.I.C.E. method",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_141",
+            "data_type": "any"
+          },
+          {
+            "title": "**Does the child has a febrile seizure**",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_149",
+            "data_type": "any"
+          },
+          {
+            "title": "🤕 Head Injury / Fall: > 🧠 *If the child falls or bumps their h",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_161",
+            "data_type": "any"
+          },
+          {
+            "title": "😣 **Cramp? Let’s ease it out:** 1️⃣ Gently stretch the muscle (",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_164",
+            "data_type": "any"
+          },
+          {
+            "title": "Got it — you're dealing with a muscle or bone injury. Let's figu",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_225",
+            "data_type": "any"
+          },
+          {
+            "title": "**👃 Object in the nose? Try this:** 1️⃣ Ask the person to breat",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_232",
+            "data_type": "any"
+          },
+          {
+            "title": "Is it a Falls / Head Bump or Nosebleed",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_234",
+            "data_type": "any"
+          },
+          {
+            "title": "⚠️ *I understand it's a sudden medical problem. Please select th",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_336",
+            "data_type": "any"
+          },
+          {
+            "title": "Looks like something has accidentally entered the body. Where is",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_359",
+            "data_type": "any"
+          },
+          {
+            "title": "**🦴 Suspect a fracture? Act carefully:** 1️⃣ Don’t move the inj",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_385",
+            "data_type": "any"
+          },
+          {
+            "title": "👃 Nosebleed: <br /> 1. **Sit the child upright** and lean their",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_397",
+            "data_type": "any"
+          },
+          {
+            "title": "**⚡ Stay calm — electrical injuries can be serious. Follow these",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_436",
+            "data_type": "any"
+          },
+          {
+            "title": "**Please choose the condition you are facing:**",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_474",
+            "data_type": "any"
+          },
+          {
+            "title": "**🩹 Got a splinter or glass piece in the skin?** 1️⃣ Wash your ",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_499",
+            "data_type": "any"
+          },
+          {
+            "title": "**🧠** ***Think FAST:*** - **Face drooping?** - **Arm weakness?*",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_507",
+            "data_type": "any"
+          },
+          {
+            "title": "Is it a Burn or Electrocution",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_530",
+            "data_type": "any"
+          },
+          {
+            "title": "**What's your child age ?**",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_560",
+            "data_type": "any"
+          },
+          {
+            "title": "> ⚠️ **If the baby is silent, turning red/blue, or not breathing",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_561",
+            "data_type": "any"
+          },
+          {
+            "title": "**Please choose the condition your child :**",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_575",
+            "data_type": "any"
+          },
+          {
+            "title": "⚠️ *This looks serious. Please don’t panic — just follow these s",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_584",
+            "data_type": "any"
+          },
+          {
+            "title": "❤️ *If someone has chest pain and you suspect a heart attack:* 1",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_641",
+            "data_type": "any"
+          },
+          {
+            "title": "Okay, I can help with bites and stings. Please tell me what kind",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_643",
+            "data_type": "any"
+          },
+          {
+            "title": "> 🌡️ *If the child has high fever (over 100.4°F or 38°C):* 1. U",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_647",
+            "data_type": "any"
+          },
+          {
+            "title": "**💪 Dislocation can be painful — here's what to do:** 1️⃣ Don’t",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_681",
+            "data_type": "any"
+          },
+          {
+            "title": "**Please tell me what kind of emergency you're facing.**",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_707",
+            "data_type": "any"
+          },
+          {
+            "title": "*it's a snake bite, stay calm and do the following:* 1️⃣ **Keep ",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_722",
+            "data_type": "any"
+          },
+          {
+            "title": "*If someone faints or becomes unconscious:* 1️⃣ **Lay them down ",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_744",
+            "data_type": "any"
+          },
+          {
+            "title": "**👁️ Got something in the eye? Here's what to do:** 1️⃣ Do NOT ",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_749",
+            "data_type": "any"
+          },
+          {
+            "title": "### ⚠️ *If the child has a febrile seizure:* 1. **Lay the child ",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_760",
+            "data_type": "any"
+          },
+          {
+            "title": "**👂 Something stuck in the ear? Follow this:** 1️⃣ Don't poke o",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_773",
+            "data_type": "any"
+          },
+          {
+            "title": "Oh ! it's an insect bite or sting, do this calmly. 1️⃣ **Remove ",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_789",
+            "data_type": "any"
+          },
+          {
+            "title": "😮 *Nosebleeds can be scary, but they’re usually not dangerous. ",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_807",
+            "data_type": "any"
+          },
+          {
+            "title": "***it’s a bite from an animal:*** 1️⃣ **Wash the wound thoroughl",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_878",
+            "data_type": "any"
+          },
+          {
+            "title": "Got it! You're facing a cuts or bleeding issue . i want to know ",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_901",
+            "data_type": "any"
+          },
+          {
+            "title": "> 😟 *Oh no, looks like it's a minor cut! Don't worry — stay cal",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_906",
+            "data_type": "any"
+          },
+          {
+            "title": "> ⚠️ *If the child cannot talk, breathe, or is clutching the thr",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_920",
+            "data_type": "any"
+          },
+          {
+            "title": "> **🔥 If a child is burned by hot water, food, or objects:** 1.",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_924",
+            "data_type": "any"
+          },
+          {
+            "title": "**Oh no! A burn can really hurt. Here's what you should do right",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_957",
+            "data_type": "any"
+          },
+          {
+            "title": "oh no ! tell me what kind of injury or wound it is",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_992",
+            "data_type": "any"
+          }
+        ],
+        "launch_mode": "learning",
+        "next_action": "fallback",
+        "display_name": "Sahayata",
+        "topic_switch": {
+          "allowed_from": true,
+          "allowed_into": true,
+          "never_return": false
+        },
+        "disambiguation_opt_out": false
+      }
+    ],
+    "intents": [
+      {
+        "intent": "fallback_connect_to_agent",
+        "examples": [
+          {
+            "text": "Call agent"
+          },
+          {
+            "text": "Agent help"
+          },
+          {
+            "text": "I would like to speak to a human"
+          },
+          {
+            "text": "Can I connect to an agent?"
+          },
+          {
+            "text": "I would like to speak to someone"
+          }
+        ],
+        "description": "Please transfer me to an agent"
+      },
+      {
+        "intent": "action_45105_intent_17150",
+        "examples": [
+          {
+            "text": "Help"
+          },
+          {
+            "text": "Help Please"
+          }
+        ]
+      }
+    ],
+    "entities": [
+      {
+        "entity": "entity_37067",
+        "values": [
+          {
+            "type": "synonyms",
+            "value": "severe bleeding",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "minor cut or scrape",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "nosebleed",
+            "synonyms": []
+          }
+        ],
+        "fuzzy_match": true
+      },
+      {
+        "entity": "entity_13018",
+        "values": [
+          {
+            "type": "synonyms",
+            "value": "🍼 For Infants (under 1 year)",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "🧒 For Children (1 year and older)",
+            "synonyms": []
+          }
+        ],
+        "fuzzy_match": true
+      },
+      {
+        "entity": "entity_40022",
+        "values": [
+          {
+            "type": "synonyms",
+            "value": "Yes",
+            "synonyms": []
+          }
+        ],
+        "fuzzy_match": true
+      },
+      {
+        "entity": "entity_9951",
+        "values": [
+          {
+            "type": "synonyms",
+            "value": "Suspected Fracture (Broken Bone)",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Sprain or Strain",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Muscle Cramp",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Dislocation",
+            "synonyms": []
+          }
+        ],
+        "fuzzy_match": true
+      },
+      {
+        "entity": "sys-yes-no",
+        "values": []
+      },
+      {
+        "entity": "entity_24617",
+        "values": [
+          {
+            "type": "synonyms",
+            "value": "🤕 Head Injury / Fall",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "👃 Nosebleed",
+            "synonyms": []
+          }
+        ],
+        "fuzzy_match": true
+      },
+      {
+        "entity": "entity_47975",
+        "values": [
+          {
+            "type": "synonyms",
+            "value": "Heart attack signs",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Stroke warning signs",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Seizure (fits)",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Fainting or unconsciousness",
+            "synonyms": []
+          }
+        ],
+        "fuzzy_match": true
+      },
+      {
+        "entity": "entity_34985",
+        "values": [
+          {
+            "type": "synonyms",
+            "value": "Burns & Electrocution",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Cuts, Scrapes & Bleeding",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Intrusion in Eye, Ear, Nose, or Skin",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Bone & Muscle Injuries",
+            "synonyms": []
+          }
+        ],
+        "fuzzy_match": true
+      },
+      {
+        "entity": "danger_words",
+        "values": [],
+        "fuzzy_match": false
+      },
+      {
+        "entity": "entity_33154",
+        "values": [
+          {
+            "type": "synonyms",
+            "value": "Burn ",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Electrocution",
+            "synonyms": []
+          }
+        ],
+        "fuzzy_match": true
+      },
+      {
+        "entity": "entity_45422",
+        "values": [
+          {
+            "type": "synonyms",
+            "value": "Insect sting or bite (bee, spider, mosquito, etc.)",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Snake bite",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Dog or animal bite",
+            "synonyms": []
+          }
+        ],
+        "fuzzy_match": true
+      },
+      {
+        "entity": "entity_40267",
+        "values": [
+          {
+            "type": "synonyms",
+            "value": "Child-specific",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Drowning-Case",
+            "synonyms": []
+          }
+        ],
+        "fuzzy_match": true
+      },
+      {
+        "entity": "entity_11931",
+        "values": [
+          {
+            "type": "synonyms",
+            "value": "Burns / Hot Liquid Scalds",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Choking or Swallowing Objects",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Fever or Seizure (Febrile Seizure)",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Falls / Head Bump / Nosebleed",
+            "synonyms": []
+          }
+        ],
+        "fuzzy_match": true
+      },
+      {
+        "entity": "profane_words",
+        "values": [],
+        "fuzzy_match": false
+      },
+      {
+        "entity": "entity_36142",
+        "values": [
+          {
+            "type": "synonyms",
+            "value": "Child-Specific or Drowning Cases",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Sudden Medical Conditions",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Bites, Stings & Allergies",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Injuries & Wounds",
+            "synonyms": []
+          }
+        ],
+        "fuzzy_match": true
+      },
+      {
+        "entity": "entity_16082",
+        "values": [
+          {
+            "type": "synonyms",
+            "value": "Ear",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Nose",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Skin",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Eye",
+            "synonyms": []
+          }
+        ],
+        "fuzzy_match": true
+      }
+    ],
+    "metadata": {
+      "api_version": {
+        "major_version": "v2",
+        "minor_version": "2018-11-08"
+      },
+      "skill": {
+        "counts": {
+          "actions": 5,
+          "intents": 2,
+          "entities": 16,
+          "data_types": 0,
+          "collections": 0,
+          "global_variables": 0
+        }
+      }
+    },
+    "variables": [],
+    "data_types": [],
+    "collections": [],
+    "counterexamples": [],
+    "system_settings": {
+      "variable": {
+        "format": {
+          "time": {
+            "pattern": "short"
+          },
+          "currency": {
+            "fraction_digits": 2
+          }
+        }
+      },
+      "off_topic": {
+        "enabled": true
+      },
+      "auto_learn": {
+        "apply": true
+      },
+      "topic_switch": {
+        "enabled": true,
+        "messages": {
+          "enable_confirmation": true,
+          "confirmation_failure": {
+            "generic": [
+              {
+                "values": [
+                  {
+                    "text_expression": {
+                      "concat": [
+                        {
+                          "scalar": "I'm sorry, I did not catch that, please confirm."
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "response_type": "text",
+                "selection_policy": "sequential"
+              }
+            ]
+          },
+          "confirmation_request": {
+            "generic": [
+              {
+                "values": [
+                  {
+                    "text_expression": {
+                      "concat": [
+                        {
+                          "scalar": "Do you want to continue with the previous topic: "
+                        },
+                        {
+                          "system_variable": "digressed_from"
+                        },
+                        {
+                          "scalar": "?"
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "response_type": "text",
+                "selection_policy": "sequential"
+              },
+              {
+                "options": [
+                  {
+                    "label": "Yes",
+                    "value": {
+                      "input": {
+                        "text": "Yes"
+                      }
+                    }
+                  },
+                  {
+                    "label": "No",
+                    "value": {
+                      "input": {
+                        "text": "No"
+                      }
+                    }
+                  }
+                ],
+                "response_type": "option",
+                "repeat_on_reprompt": true
+              }
+            ]
+          }
+        },
+        "max_tries": 3
+      },
+      "generative_ai": {
+        "hap_filter": {
+          "output": {
+            "enabled": true
+          }
+        }
+      },
+      "disambiguation": {
+        "prompt": "Did you mean:",
+        "enabled": true,
+        "randomize": true,
+        "max_suggestions": 5,
+        "suggestion_text_policy": "title",
+        "none_of_the_above_prompt": "None of the above",
+        "use_connect_to_support_prompt": "Connect to support",
+        "single_answer_clarification_prompt": "Something else"
+      },
+      "search_routing": {
+        "target": "conversational_search"
+      },
+      "spelling_auto_correct": true
+    },
+    "learning_opt_out": false,
+    "language": "en"
+  },
+  "description": "created for assistant 52104cfb-382c-49ac-a9dd-2ad4651529df",
+  "dialog_settings": {
+    "source_assistant": "7ec24d23-1f19-49e6-96da-362920440c62"
+  },
+  "created": "2025-07-25T13:09:54.629Z",
+  "updated": "2025-07-25T13:09:54.629Z",
+  "snapshot": "2",
+  "assistant_id": "52104cfb-382c-49ac-a9dd-2ad4651529df",
+  "assistant_references": []
+}
